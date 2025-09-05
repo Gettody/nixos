@@ -41,5 +41,5 @@
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 7d";
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "25.05";
 }
