@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, stateVersion, ... }:
 
 {
   imports = [ 
@@ -42,5 +42,5 @@
 
   fonts.packages = with pkgs; [ nerd-fonts.terminess-ttf ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = stateVersion;
 }
