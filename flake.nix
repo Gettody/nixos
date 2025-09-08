@@ -19,22 +19,29 @@
     let 
       system = "x86_64-linux";
     in {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-      homeConfigurations.leo = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./home.nix ];
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            home-manager.nixosModules.default
+          ];
+        };
+
+        iso = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/iso/configuration.nix
+            nixos-generators.nixosModules.all-formats
+          ];
+        };
       };
 
-      packages.${system}.iso = nixos-generators.nixosGenerate {
-        inherit system;
-        modules = [ ./hosts/iso/configuration.nix ];
-        format = "iso";
+      homeConfigurations.leo = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./users/leo/default.nix ];
       };
+
+      packages.${system}.iso = self.nixosConfigurations.iso.config.formats.iso;
   };
 }
