@@ -8,16 +8,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos-vm";
+  networking.hostName = "nixos-virtualbox";
   networking.useDHCP = true;
-
-  users.users.vmuser = {
-    isNormalUser = true;
-    home = "/home/vmuser";
-    description = "VM user";
-    extraGroups = [ "wheel" ];
-    password = "password";
-  };
 
   services.openssh.enable = true;
   services.firewall.enable = false;

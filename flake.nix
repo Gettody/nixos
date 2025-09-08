@@ -31,7 +31,7 @@
         iso = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/iso/configuration.nix
+            ./hosts/iso/default.nix
             nixos-generators.nixosModules.all-formats
           ];
         };

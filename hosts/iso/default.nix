@@ -6,7 +6,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    disko
+    disko 
+    git
+    neovim
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
