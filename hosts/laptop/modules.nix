@@ -1,0 +1,10 @@
+[
+  ../../modules/nixos/audio.nix
+  ../../modules/nixos/docker.nix
+  ../../modules/nixos/flatpak.nix
+  ../../modules/nixos/libvirtd.nix
+  ../../modules/nixos/nix.nix
+  ../../modules/nixos/sshd.nix
+  ../../modules/nixos/syncthing.nix
+  ../../modules/nixos/yggdrasil.nix
+]
